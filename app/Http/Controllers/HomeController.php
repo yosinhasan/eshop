@@ -28,7 +28,6 @@ class HomeController extends Controller {
      * @return Response
      */
     public function index() {
-        \App\Config\Debugger::show($this->cart->readAll());
         $categories = $this->category->readAll();
         $brands = $this->brand->readWithAmount();
         $products = $this->product->readPopular(config("product.limit_popular"));
@@ -42,7 +41,6 @@ class HomeController extends Controller {
      * @return Response
      */
     public function products(Request $request) {
-        \App\Config\Debugger::show($this->cart->readAll());
         $categories = $this->category->readAll();
         $brands = $this->brand->readWithAmount();
         $products = $this->getProducts($request);
@@ -56,11 +54,12 @@ class HomeController extends Controller {
      * @return Response
      */
     public function product($id) {
+        $amount = $this->cart->read($id);
         $categories = $this->category->readAll();
         $brands = $this->brand->readWithAmount();
         $aggregate = $this->product->aggregateDetail();
         $product = $this->product->read($id);
-        return view('front.product', compact('categories', 'brands', 'product', 'aggregate'));
+        return view('front.product', compact('categories', 'brands', 'product', 'aggregate', 'amount'));
     }
 
     /**

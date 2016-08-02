@@ -7,10 +7,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/product/{id}', 'HomeController@product')->where('id', '[0-9]+');
     Route::get('/contact', 'HomeController@contact');
     Route::get('/about', 'HomeController@about');
-    
+
+
     Route::get('/addtocart', 'CartController@add');
     Route::post('/updatecart', 'CartController@update');
-
+    Route::get('/deleteitem', 'CartController@delete');
     Route::get('/cart', 'CartController@index');
     Route::get('/checkout', 'CartController@checkout');
 

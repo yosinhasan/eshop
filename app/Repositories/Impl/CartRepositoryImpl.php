@@ -55,7 +55,7 @@ final class CartRepositoryImpl implements CartRepository {
     }
 
     public function __unset($name) {
-        if (session()->has($this->session_name . $name)) {
+        if (session()->has($this->session_name . "." . $name)) {
             session()->forget($this->session_name . "." . $name);
         }
     }
@@ -70,6 +70,17 @@ final class CartRepositoryImpl implements CartRepository {
             $amount += $this->$id;
         }
         $this->$id = $amount;
+    }
+
+    public function sub($id, $amount) {
+        $amount = abs((int) $amount);
+        if (isset($this->$id)) {
+            $amount = $this->$id - $amount;
+            if ($amount <= 0) {
+                return $this->delete($id);
+            }
+            $this->$id = $amount;
+        }
     }
 
     public function flush() {

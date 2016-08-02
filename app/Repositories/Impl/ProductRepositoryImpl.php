@@ -102,12 +102,17 @@ class ProductRepositoryImpl implements ProductRepository {
                         break;
                 }
             }
-            if ($params['start_price'] > 0 && $params['end_price'] > 0) {
+            if (isset($params['ids'])) {
+                $products->whereIn('products.id', $params['ids']);
+            }
+            if (isset($params['start_price'])) {
+                if ($params['start_price'] > 0 && $params['end_price'] > 0) {
 
-                $products->where(function($query) use ($params) {
-                    $query->where('price', '>=', $params['start_price'])
-                            ->where('price', '<=', $params['end_price']);
-                });
+                    $products->where(function($query) use ($params) {
+                        $query->where('price', '>=', $params['start_price'])
+                                ->where('price', '<=', $params['end_price']);
+                    });
+                }
             }
             if (isset($params['limit'])) {
                 $limit = abs((int) $params['limit']);

@@ -105,7 +105,7 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{{ url('/')}}" class="active">{{ trans('app.Home') }}</a></li>
-                            <li class="dropdown"><a href="#">{{ trans('app.Shop') }}<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="{{ url('/products')}}">{{ trans('app.Shop') }}<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{ url('/products')}}">{{ trans('app.Products') }}</a></li>
                                     <li><a href="{{ url('/checkout')}}">{{ trans('app.Checkout') }}</a></li> 

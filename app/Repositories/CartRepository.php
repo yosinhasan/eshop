@@ -17,6 +17,14 @@ interface CartRepository extends \App\Repositories\BaseRepository {
     public function add($id, $amount);
 
     /**
+     * Sub amount from respective product in storage.
+     * 
+     * @param type $id product id
+     * @param type $amount product amount
+     */
+    public function sub($id, $amount);
+
+    /**
      * Clean storage. 
      */
     public function flush();

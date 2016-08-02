@@ -58,7 +58,7 @@
                                 <form action="{{ url('/updatecart')}}" method="post" >
                                     {!! csrf_field() !!}
                                     <input name="id" type="hidden" min="1" value="{{ $product->id }}" />
-                                    <input name="amount" type="number" min="1" value="1" />
+                                    <input name="amount" type="number" min="1" value="{{ ($amount != null) ? $amount :1 }}" />
                                     <button type="submit" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Add to cart
