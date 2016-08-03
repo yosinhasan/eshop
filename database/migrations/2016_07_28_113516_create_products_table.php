@@ -14,10 +14,10 @@ class CreateProductsTable extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->index();
-            $table->double('price')->index();
+            $table->double('price');
             $table->text('details');
             $table->string('avatar');
-            $table->bigInteger('brand_id');
+            $table->bigInteger('brand_id')->index();
             $table->smallInteger('available_id');
             $table->smallInteger('condition_id');
             $table->softDeletes();

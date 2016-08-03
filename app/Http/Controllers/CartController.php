@@ -10,10 +10,12 @@ class CartController extends Controller {
 
     private $cart;
     private $product;
+    private $order;
 
     public function __construct(ShopFactory $factory) {
         $this->cart = $factory->cart();
         $this->product = $factory->product();
+        $this->order = $factory->order();
     }
 
     public function add(Request $request) {
@@ -64,6 +66,27 @@ class CartController extends Controller {
         }
         $products = $this->product->readByParams(['ids' => $ids]);
         return view('front.checkout', compact('all', 'products'));
+    }
+
+    public function complete(Request $request) {
+        if ($request->isMethod('post')) {
+            $all = $this->cart->readAll();
+            $ids = array_keys($all);
+            $data = [];
+            $products = $this->product->readByParams(['ids' => $ids]);
+            $status = 500;
+            foreach ($products as $product) {
+                $data[$product->id]['price'] = $product->price;
+                $data[$product->id]['amount'] = $all[$product->id];
+            }
+            if ($this->order->saveOrder($data, auth()->user()->id)) {
+                $this->cart->flush();
+                $status = 200;
+            }
+            return redirect()->action("CartController@complete", ['orderStatus' => $status]);
+        }
+        $status = $request->orderStatus;
+        return view('front.complete', compact('status'));
     }
 
 }

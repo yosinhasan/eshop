@@ -51,8 +51,22 @@
                             <img src="{!! asset("images/product-details/new.jpg") !!}" class="newarrival" alt="" />
                                  <h2>{{ $product->name}}</h2>
                             <p>Web ID: {{ $product->id}}</p>
-                            <img src="{!! asset("images/product-details/rating.png") !!}" alt="" />
-                                 <span>
+                            <div>  
+                                @if ($rate != null) 
+                                @for($i=0; $i < $rate->rate; $i++) 
+                                <span class="glyphicon glyphicon-star"></span>
+                                @endfor
+                                @for($i=0; $i < 5-$rate->rate; $i++) 
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                @endfor
+                                <span>({{$rate->votes}})</span>
+                                @else
+                                @for($i=0; $i < 5; $i++) 
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                @endfor
+                                @endif
+                            </div>
+                            <span>
                                 <span>US ${{ $product->price}}</span>
                                 <label>Quantity:</label>
                                 <form action="{{ url('/updatecart')}}" method="post" >
@@ -77,7 +91,7 @@
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
                             <li><a href="#details" data-toggle="tab">Details</a></li>
-                            <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+                            <li class="active"><a href="#reviews" data-toggle="tab">Reviews ({{ ($reviews != null) ? count($reviews) : 0}})</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -88,24 +102,59 @@
                         </div>
                         <div class="tab-pane fade active in" id="reviews" >
                             <div class="col-sm-12">
-                                <ul>
-                                    <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                    <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                    <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                @foreach($reviews as $review)
+                                <div class="col-sm-12">
+                                    <ul>
+                                        <li><a href=""><i class="fa fa-user"></i>{{ $review->name  }}</a></li>
+                                        <li><a href=""><i class="fa fa-clock-o"></i>{{ date('g:i a', strtotime($review->created_at)) }}</a></li>
+                                        <li><a href=""><i class="fa fa-calendar-o"></i>{{ date('d M Y', strtotime($review->created_at)) }}</a></li>
+                                    </ul>
+                                    <p>{{ $review->review }}</p>
+                                </div>
+                                @endforeach
+                                @if (Auth::check())
                                 <p><b>Write Your Review</b></p>
-                                <form action="#">
-                                    <span>
-                                        <input type="text" placeholder="Your Name"/>
-                                        <input type="email" placeholder="Email Address"/>
-                                    </span>
-                                    <textarea name="" ></textarea>
-                                    <b>Rating: </b> <img src="{!! asset("images/product-details/rating.png") !!}" alt="" />
-                                                         <button type="button" class="btn btn-default pull-right">
-                                        Submit
-                                    </button>
+                                <form action="{{ url('/review')}}" method="post">
+                                    {!! csrf_field() !!}
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <textarea required="required" name="review"></textarea>
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td><b>Rating: </b></td>
+                                            <td> 
+                                                <div class="rating-select">  
+                                                    <div class="btn btn-default btn-sm" val="1">
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    </div>
+                                                    <div class="btn btn-default btn-sm" val="2">
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    </div>
+                                                    <div class="btn btn-default btn-sm" val="3">
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    </div>
+                                                    <div class="btn btn-default btn-sm" val="4">
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    </div>
+                                                    <div class="btn btn-default btn-sm" val="5">
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="pull-right">
+                                                <input class="rateProduct" type="hidden" name="rate" value="" />
+                                                <button type="submit" class="btn btn-default pull-right">
+                                                    {{ trans('front/products.submit') }}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </form>
+                                @else
+                                <p><b>Please log in in order to review the product</b></p>
+                                @endif
+
+
+
                             </div>
                         </div>
 

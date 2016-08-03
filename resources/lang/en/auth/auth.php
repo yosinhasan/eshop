@@ -14,7 +14,7 @@ return [
     'signup_title' => 'New User Signup!',
     'or' => 'OR',
     'repeatPassword' => 'Repeat password',
-    '' => '',
+    'sign_up' => 'Register new account',
     '' => '',
     '' => '',
     '' => '',

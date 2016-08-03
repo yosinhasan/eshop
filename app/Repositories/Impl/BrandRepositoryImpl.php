@@ -17,7 +17,7 @@ class BrandRepositoryImpl implements BrandRepository {
 
     public function create($data) {
         if ($data->validate()) {
-            $item = new Category();
+            $item = new Brand();
             $item->name = $data->get('name');
             return $item->save();
         }

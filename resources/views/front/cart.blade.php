@@ -71,7 +71,7 @@
                         <li>Shipping Cost <span>Free</span></li>
                         <li>Total <span>${{ $amount }}</span></li>
                     </ul>
-                    <a class="btn btn-default update" href="">Update</a>
+                    <a class="btn btn-default update" href="{{ url('/clearcart') }}">Clear cart</a>
                     <a class="btn btn-default check_out" href="{{ url('/checkout') }}">Check Out</a>
                 </div>
             </div>

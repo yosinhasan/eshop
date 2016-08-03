@@ -22,13 +22,15 @@
                         </div>
                     </div>
                 </div>-->
-        <div class="panel panel-default">
+        <?php $cat = request()->get("act") == "category"; ?>
+        <div class="panel panel-<?= (!$cat && request()->get("id") == null) ? "warning" : "default"; ?>">
             <div class="panel-heading">
                 <h4 class="panel-title"><a href="{{ url('/products') }}">{{ trans('front/products.all') }}</a></h4>
             </div>
         </div>
+
         @foreach($categories as $category)
-        <div class="panel panel-default">
+        <div class="panel panel-<?= ($cat && request()->get("id") == $category->id ) ? "warning" : "default"; ?>">
             <div class="panel-heading">
                 <h4 class="panel-title"><a href="{{ url('/products?act='.App\Config\Config::REQUEST_CATEGORY.'&id='.$category->id)}}">{{ $category->name }}</a></h4>
             </div>
@@ -41,7 +43,7 @@
         <div class="brands-name">
             <ul class="nav nav-pills nav-stacked">
                 @foreach($brands as $brand)
-                <li><a href="{{ url('/products?act='.App\Config\Config::REQUEST_BRAND.'&id='.$brand->id)}}"> <span class="pull-right">({{$brand->amount}})</span>{{ $brand->name }}</a></li>
+                <li> <a href="{{ url('/products?act='.App\Config\Config::REQUEST_BRAND.'&id='.$brand->id)}}" <?= (!$cat && request()->get("id") == $brand->id) ? "class='bold'" : ""; ?><?= (!$cat && request()->get("id") == $brand->id) ? "class='active'" : ""; ?>> <span class="pull-right">({{$brand->amount}})</span>{{ $brand->name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -61,7 +63,7 @@
     </div><!--/price-range-->
 
     <div class="shipping text-center"><!--shipping-->
-        <img src="images/home/shipping.jpg" alt="" />
+        <img src="{{ asset('images/home/shipping.jpg') }}" alt="" />
     </div><!--/shipping-->
 
 </div>

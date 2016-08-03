@@ -18,4 +18,8 @@ interface Factory {
     public function product();
 
     public function cart($session_name = null);
+
+    public function review();
+
+    public function order();
 }

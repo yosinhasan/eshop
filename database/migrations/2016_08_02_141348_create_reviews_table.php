@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePhotosTable extends Migration {
+class CreateReviewsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -11,10 +11,11 @@ class CreatePhotosTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('photo');
-            $table->bigInteger('product_id')->index();
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->bigInteger('product_id')->unsigned()->index();
+            $table->text("review");
             $table->timestamps();
         });
     }
@@ -25,7 +26,7 @@ class CreatePhotosTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('photos');
+        Schema::drop('reviews');
     }
 
 }

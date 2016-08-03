@@ -62,7 +62,9 @@ a#scrollUp i{
     font-size: 30px;
 }
 
-
+.bold {
+    font-weight: bold;
+}
 /*************************
 *******Header CSS******
 **************************/

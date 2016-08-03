@@ -4,6 +4,7 @@ namespace App\Repositories\Impl;
 
 use App\Repositories\ProductRepository;
 use App\Models\Product;
+use App\Models\Rate;
 use Illuminate\Support\Facades\DB;
 use App\Config\Config;
 
@@ -157,6 +158,40 @@ class ProductRepositoryImpl implements ProductRepository {
             }
         }
         return DB::select($select)[0];
+    }
+
+    public function addRate($data) {
+        $product_id = ($data->get('product_id') != null) ? (int) $data->get('product_id') : 0;
+        $rate = ($data->get('rate') != null || $data->get('rate') > 5) ? $data->get('rate') : 0;
+        if ($product_id > 0 && $rate > 0) {
+            $item = Rate::where('product_id', '=', $product_id)
+                            ->where('user_id', '=', $data->user_id)->first();
+            if ($item != null) {
+                if ($item->rate != $rate) {
+                    Rate::where('product_id', '=', $product_id)->where('user_id', '=', $data->user_id)->update(['rate' => $rate]);
+                }
+            } else {
+                $item = new Rate();
+                $item->product_id = $product_id;
+                $item->user_id = $data->user_id;
+                $item->rate = $rate;
+                $item->save();
+            }
+            return;
+        }
+    }
+
+    public function getRateInfo($product_id) {
+        $id = (int) $product_id;
+        $data = null;
+        if ($id > 0) {
+            $select = "SELECT AVG(rate) as rate, COUNT(product_id) as votes FROM rates WHERE product_id = " . $id . " GROUP BY product_id";
+            $res = DB::select($select);
+            if (count($res) > 0) {
+                $data = $res[0];
+            }
+        }
+        return $data;
     }
 
 }

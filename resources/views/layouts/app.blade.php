@@ -30,5 +30,6 @@
         <script src="{!! asset('js/price-range.js') !!}"></script>
         <script src="{!! asset('js/jquery.prettyPhoto.js') !!}"></script>
         <script src="{!! asset('js/main.js') !!}"></script>
+        <script src="{!! asset('js/rating.js') !!}"></script>
     </body>
 </html>

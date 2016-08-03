@@ -20,6 +20,9 @@
                             <input type="checkbox" class="checkbox" name="remember"> 
                             {{ trans('auth/auth.keep_singed_in')}}
                         </span>
+                        <a href="{{ url('/auth/register') }}">
+                            {{ trans('auth/auth.sign_up')}}
+                        </a>
                         <button type="submit" class="btn btn-default">{{ trans('auth/auth.login')}}</button>
                     </form>
                 </div><!--/login form-->

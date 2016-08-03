@@ -13,7 +13,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/updatecart', 'CartController@update');
     Route::get('/deleteitem', 'CartController@delete');
     Route::get('/cart', 'CartController@index');
-    Route::get('/checkout', 'CartController@checkout');
+    Route::get('/clearcart', 'CartController@clean');
 
     Route::get('locale/{lang}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
@@ -28,6 +28,12 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(array('prefix' => 'admin', 'middleware' => 'manager'), function () {
     Route::get('/', 'HomeController@index');
     Route::get('users', 'UserController@index');
+});
+Route::group(array('middleware' => 'auth'), function () {
+    Route::get('/checkout', 'CartController@checkout');
+    Route::post('/review', 'HomeController@review');
+    Route::post('/complete', 'CartController@complete');
+    Route::get('/complete', 'CartController@complete');
 });
 
 //Route::get('/{lang}', function($lang) {

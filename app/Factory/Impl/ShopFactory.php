@@ -26,4 +26,12 @@ class ShopFactory implements Factory {
         return new \App\Repositories\Impl\CartRepositoryImpl($session_name);
     }
 
+    public function review() {
+        return new \App\Repositories\Impl\ReviewRepositoryImpl;
+    }
+
+    public function order() {
+        return new \App\Repositories\Impl\OrderRepositoryImpl();
+    }
+
 }

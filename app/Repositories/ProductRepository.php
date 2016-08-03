@@ -18,4 +18,8 @@ interface ProductRepository extends BaseRepository {
     public function aggregateDetail($config = []);
 
     public function readByParams($params = []);
+
+    public function addRate($data);
+
+    public function getRateInfo($product_id);
 }

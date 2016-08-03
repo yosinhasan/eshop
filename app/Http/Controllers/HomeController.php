@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\ChangeLocale;
 use App\Factory\Impl\ShopFactory;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewFormRequest;
 
 class HomeController extends Controller {
 
@@ -13,6 +14,7 @@ class HomeController extends Controller {
     private $user;
     private $product;
     private $cart;
+    private $review;
 
     function __construct(ShopFactory $factory) {
         $this->category = $factory->category();
@@ -20,6 +22,7 @@ class HomeController extends Controller {
         $this->user = $factory->user();
         $this->product = $factory->product();
         $this->cart = $factory->cart();
+        $this->review = $factory->review();
     }
 
     /**
@@ -59,7 +62,12 @@ class HomeController extends Controller {
         $brands = $this->brand->readWithAmount();
         $aggregate = $this->product->aggregateDetail();
         $product = $this->product->read($id);
-        return view('front.product', compact('categories', 'brands', 'product', 'aggregate', 'amount'));
+        $rate = $this->product->getRateInfo($product->id);
+        if ($rate != null) {
+            $rate->rate = round($rate->rate);
+        }
+        $reviews = $this->review->readByProductId($product->id);
+        return view('front.product', compact('categories', 'brands', 'product', 'aggregate', 'amount', 'rate', 'reviews'));
     }
 
     /**
@@ -78,6 +86,13 @@ class HomeController extends Controller {
      */
     public function about() {
         return view('front.about');
+    }
+
+    public function review(ReviewFormRequest $request) {
+        $request->user_id = auth()->user()->id;
+        $this->review->create($request);
+        $this->product->addRate($request);
+        return redirect()->back();
     }
 
     /**
