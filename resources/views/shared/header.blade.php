@@ -51,17 +51,6 @@
                                 @endif
                             </ul>
                         </div>
-
-                        <!--                                <div class="btn-group">
-                                                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                                                DOLLAR
-                                                                <span class="caret"></span>
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="#">Canadian Dollar</a></li>
-                                                                <li><a href="#">Pound</a></li>
-                                                            </ul>
-                                                        </div>-->
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -120,7 +109,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <input type="text" placeholder="{{ trans('app.Search') }}"/>
                     </div>
                 </div>
             </div>

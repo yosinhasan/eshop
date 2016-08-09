@@ -12,15 +12,13 @@ return [
     'password' => 'Password',
     'signup' => 'Signup',
     'signup_title' => 'New User Signup!',
+    'or' => 'OR',
+    'repeatPassword' => 'Repeat password',
+    'sign_up' => 'Register new account',
+    'Subject' => 'Subject',
+    'Your Message Here' => 'Your Message Here',
     '' => '',
     '' => '',
     '' => '',
     '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    
-
 ];

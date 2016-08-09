@@ -5,7 +5,7 @@
 @section('content')
 <section id="cart_items">
     <div class="container">
-        <h1>About</h1>
+        <h1>{{ trans('app.About') }}</h1>
     </div>
 </section> <!--/#cart_items-->
 

@@ -1,5 +1,5 @@
 <div class="left-sidebar">
-    <h2>Category</h2>
+    <h2>{{ trans('front/products.Category') }}</h2>
     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
         <!--        <div class="panel panel-default">
                     <div class="panel-heading">
@@ -39,7 +39,7 @@
     </div><!--/category-products-->
 
     <div class="brands_products"><!--brands_products-->
-        <h2>Brands</h2>
+        <h2>{{ trans('front/products.Brands') }}</h2>
         <div class="brands-name">
             <ul class="nav nav-pills nav-stacked">
                 @foreach($brands as $brand)
@@ -50,7 +50,7 @@
     </div><!--/brands_products-->
 
     <div class="price-range"><!--price-range-->
-        <h2>Price Range</h2>
+        <h2>{{ trans('front/products.Price_Range') }}</h2>
         <div class="well text-center">
             <form action="{{ url('/products') }}">
                 <input name="price_range" type="text" class="span2" value="" data-slider-min="{{ $aggregate->min }}" data-slider-max="{{ $aggregate->max }}" data-slider-step="5" data-slider-value="[{{ $aggregate->min }},{{ $aggregate->max }}]" id="sl2" ><br />

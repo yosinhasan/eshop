@@ -38,8 +38,4 @@ return [
     'Social Networking' => 'SOCIAL NETWORKING',
     'Contact Us' => 'Contact Us',
     'Get In Touch' => 'Get In Touch',
-    'Category' => 'CATEGORY',
-    'Brands' => 'BRANDS',
-    'Price_Range' => 'PRICE RANGE',
-    'ZOOM' => 'ZOOM'
 ];

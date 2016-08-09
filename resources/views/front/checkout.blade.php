@@ -108,18 +108,18 @@
                     </div>
                 </div>-->
         <div class="review-payment">
-            <h2>Review & Payment</h2>
+            <h2>{{ trans('front/products.Review & Payment') }}</h2>
         </div>
 
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="image">Item</td>
+                        <td class="image">{{ trans('front/products.Item') }}</td>
                         <td class="description"></td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
+                        <td class="price">{{ trans('front/products.Price') }}</td>
+                        <td class="quantity">{{ trans('front/products.Quantity') }}</td>
+                        <td class="total">{{ trans('front/products.Total') }}</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -155,11 +155,11 @@
                         <td colspan="2">
                             <table class="table table-condensed total-result">
                                 <tr class="shipping-cost">
-                                    <td>Shipping Cost</td>
-                                    <td>Free</td>										
+                                    <td>{{ trans('front/products.Shipping Cost') }}</td>
+                                    <td>{{ trans('front/products.Free') }}</td>										
                                 </tr>
                                 <tr>
-                                    <td>Total</td>
+                                    <td>{{ trans('front/products.Total') }}</td>
                                     <td><span>${{ $amount }}</span></td>
                                 </tr>
                             </table>
@@ -173,17 +173,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="payment-options">
-            <span>
-                <label><input type="checkbox"> Direct Bank Transfer</label>
-            </span>
-            <span>
-                <label><input type="checkbox"> Check Payment</label>
-            </span>
-            <span>
-                <label><input type="checkbox"> Paypal</label>
-            </span>
         </div>
     </div>
 </section> <!--/#cart_items-->

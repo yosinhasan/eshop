@@ -2,9 +2,9 @@
 
 return [
     'OPPS' => 'OPPS!',
-    'not_found' => 'Wir konnten nicht finden diese Seite',
-    'not_found_description' => 'Uh ... So sieht es aus wie Sie etwas brock. Die Seite, die Sie suchen verschwunden.',
-    'back_home' => 'Bringen Sie mich zurück Home',
+    'not_found' => 'We Couldn’t Find this Page',
+    'not_found_description' => 'Uh... So it looks like you brock something. The page you are looking for has up and Vanished.',
+    'back_home' => 'Bring me back Home',
     '' => '',
     '' => '',
     '' => '',

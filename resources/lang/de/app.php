@@ -2,8 +2,8 @@
 
 return [
     'en' => 'english',
-    'ru' => 'russisch',
-    'de' => 'deutsch',
+    'ru' => 'russian',
+    'de' => 'german',
     'Account' => 'Account',
     'Wishlist' => 'Wishlist',
     'Checkout' => 'Checkout',
@@ -43,6 +43,9 @@ return [
     'Designed by' => 'Designed by',
     'CompanyName' => 'No company',
     'All rights reserved' => 'All rights reserved',
-    '' => '',
-    '' => '',
+    'Signup' => 'Sign up',
+    'Logout' => 'Log out',
+    'Home' => 'Home',
+    'Shop' => 'Shop',
+    'Search' => 'Search'
 ];

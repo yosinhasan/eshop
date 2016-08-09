@@ -23,48 +23,6 @@
                             <h2>24 DEC 2016</h2>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{ asset('images/home/iframe4.png')  }}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Actie play</p>
-                            <h2>24 DEC 2016</h2>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{ asset('images/home/iframe4.png')  }}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Actie play</p>
-                            <h2>24 DEC 2016</h2>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{ asset('images/home/iframe4.png')  }}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Actie play</p>
-                            <h2>24 DEC 2016</h2>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="address">
@@ -131,9 +89,8 @@
                     <div class="single-widget">
                         <h2>{{ trans('app.About') }}</h2>
                         <form action="#" class="searchform">
-                            <input type="text" placeholder="Your email address" />
+                            <input type="text" placeholder="{{ trans('auth/auth.email_address')}}" />
                             <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                            <p>Get the most recent updates from <br />our site and be updated your self...</p>
                         </form>
                     </div>
                 </div>

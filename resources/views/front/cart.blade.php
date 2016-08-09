@@ -15,11 +15,11 @@
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="image">Item</td>
+                        <td class="image">{{ trans('front/products.Item') }}</td>
                         <td class="description"></td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
+                        <td class="price">{{ trans('front/products.Price') }}</td>
+                        <td class="quantity">{{ trans('front/products.Quantity') }}</td>
+                        <td class="total">{{ trans('front/products.Total') }}</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -68,11 +68,11 @@
             <div class="col-sm-6">
                 <div class="total_area">
                     <ul>
-                        <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span>${{ $amount }}</span></li>
+                        <li>{{ trans('front/products.Shipping Cost') }} <span>{{ trans('front/products.Free') }}</span></li>
+                        <li>{{ trans('front/products.Total') }} <span>${{ $amount }}</span></li>
                     </ul>
-                    <a class="btn btn-default update" href="{{ url('/clearcart') }}">Clear cart</a>
-                    <a class="btn btn-default check_out" href="{{ url('/checkout') }}">Check Out</a>
+                    <a class="btn btn-default update" href="{{ url('/clearcart') }}">{{ trans('front/products.Clear cart') }}</a>
+                    <a class="btn btn-default check_out" href="{{ url('/checkout') }}">{{ trans('front/products.Check Out') }}</a>
                 </div>
             </div>
         </div>

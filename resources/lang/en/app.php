@@ -47,4 +47,6 @@ return [
     'Logout' => 'Log out',
     'Home' => 'Home',
     'Shop' => 'Shop',
+    'Search' => 'Search',
+
 ];
